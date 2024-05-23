@@ -1,4 +1,4 @@
-const data = [
+const dataTest = [
   {
     firstName: "Rei",
     lastName: "Ayanami",
@@ -11,4 +11,4 @@ const data = [
   },
 ];
 
-export default data;
+export default dataTest;

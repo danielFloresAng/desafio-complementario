@@ -9,9 +9,10 @@ import cartRouter from "./routes/cart.routes.js";
 
 const app = express();
 
-const http = app.listen(config.PORT, () => {
-  console.log(`Servidor funcionando en puerto ${config.PORT}`);
+const http = app.listen(config.PORT, async() => {
+  await mongoose.connect(config.MONGODB_URI)
 });
+console.log(`Servidor funcionando en puerto ${config.PORT} conectada a ${config.SERVER}`);
 
 const socketServer = socketInit(http);
 
@@ -24,6 +25,6 @@ app.engine('handlebars', handlebars.engine())
 app.set('views', `${config.DIRNAME}/views`)
 app.set('view engine', 'handlebars')
 
-app.use('appi/products', routerProducts)
+app.use('/api/products', productsRouter)
 app.use('/api/cart', cartRouter)
-app.use('static', express.static(`${config.DIRNAME}/public`))
+app.use('/static', express.static(`${config.DIRNAME}/public`))

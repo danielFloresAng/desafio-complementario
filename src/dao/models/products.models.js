@@ -1,4 +1,4 @@
-import mongoose, { pluralize } from "mongoose";
+import mongoose from "mongoose";
 
 mongoose.pluralize(null);
 
@@ -14,4 +14,4 @@ const productsSchema = new mongoose.Schema({
 
 const productsModel = mongoose.model(productsCollection, productsSchema);
 
-export default productsModel
+export default productsModel;

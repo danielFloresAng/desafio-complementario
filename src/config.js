@@ -10,7 +10,7 @@ const config = {
     return `${this.DIRNAME}/public/img`;
   },
   MONGODB_URI:
-    "mongodb+srv://coder_53160:coder2024@clustercoder.sxqjiud.mongodb.net/coder_53160",
+  "mongodb+srv://danns1125:E-commerce@e-commerce-coder.ksbwadq.mongodb.net/users_aggregate?retryWrites=true&w=majority",
 };
 
 export default config;

@@ -9,11 +9,6 @@ class CartManager {
     let itemsList = this.carts;
     let itemListPath = this.path;
     let generateID = itemsList.length + 1;
-    // let findCode = itemsList.find((elem) => elem.code === item.code);
-
-    // !findCode || item.code === undefined
-    //   ? itemsList.push({ id: generateID, ...item })
-    //   : console.error(`El carrito con código "${item.code}" ya existe`);
 
     let listJSON = JSON.stringify(itemsList);
 

@@ -6,6 +6,7 @@ import config from "./config.js";
 import socketInit from "./sockets.js";
 import productsRouter from "./routes/products.routes.js";
 import cartRouter from "./routes/cart.routes.js";
+import messagesRouter from "./routes/messages.routes.js";
 
 const app = express();
 
@@ -27,4 +28,5 @@ app.set('view engine', 'handlebars')
 
 app.use('/api/products', productsRouter)
 app.use('/api/cart', cartRouter)
+app.use('/messages', messagesRouter)
 app.use('/static', express.static(`${config.DIRNAME}/public`))

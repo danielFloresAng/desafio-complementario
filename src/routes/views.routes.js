@@ -1,16 +1,12 @@
 import { Router } from "express";
 
-import data from "../data.js";
-import config from "../config.js";
+// import data from "../data.js";
+// import config from "../config.js";
 
-const router = new Router()
+const router = Router();
 
-router.get('/',async(req,res)=>{
-  try{
-    res.status(200).send({status: 'ok', origin: config.SERVER, playload:data})
-  }
-  catch{
-    res.status(500).send({status: 'error', origin: config.SERVER, error:'error'})
-  }
-})
-export default router
+router.get("/products", (req, res) => {
+  const data = ["flaco, ésta es la data, loco"];
+  res.render("products", { data: data });
+});
+export default router;

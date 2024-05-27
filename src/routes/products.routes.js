@@ -16,18 +16,32 @@ productsRouter.get("/", async (req, res) => {
   } catch (error) {
     res.status(500).send({ origin: config.SERVER, error: error.message });
   }
+  b;
 });
-// productsRouter.put("/", async (req, res) => {
-//   try {
-//   } catch {}
-// });
-// productsRouter.post("/", async (req, res) => {
-//   try {
-//   } catch {}
-// });
-// productsRouter.delete("/", async (req, res) => {
-//   try {
-//   } catch {}
-// });
+productsRouter.post("/", async (req, res) => {
+  try {
+    res.status(200).send({ status: "on", playload: "POST" });
+  } catch (error) {
+    res.status(500).send({ origin: config.SERVER, error: error.message });
+  }
+});
+productsRouter.put("/", async (req, res) => {
+  try {
+    res.status(200).send({ status: "on", playload: "PUT" });
+  } catch (error) {
+    res.status(500).send({ origin: config.SERVER, error: error.message });
+  }
+});
+productsRouter.delete("/", async (req, res) => {
+  /* const filter = { _id: req.params.id };
+  const deleteProduct = await productsModel.findOneAndDelete(filter);
+
+  res.send({ origin: config.SERVER, playload: deleteProduct }); */
+  try {
+    res.status(200).send({ status: "on", playload: "DELETE" });
+  } catch (error) {
+    res.status(500).send({ origin: config.SERVER, error: error.message });
+  }
+});
 
 export default productsRouter;

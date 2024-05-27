@@ -1,11 +1,11 @@
 import path from "path";
+import * as url from "url";
 
 const config = {
   SERVER: "Atlas",
   PORT: 8080,
-  DIRNAME: path.dirname(
-    new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:\/)/, "$1")
-  ),
+
+  DIRNAME: url.fileURLToPath(new URL(".", import.meta.url)),
   get UPLOAD_DIR() {
     return `${this.DIRNAME}/public/img`;
   },
@@ -15,3 +15,10 @@ const config = {
 };
 
 export default config;
+
+/**  DIRNAME: path.dirname(
+    new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:\/)/, "$1")
+  ), // Win
+  get UPLOAD_DIR() {
+    return `${this.DIRNAME}/public/img`;
+  },*/

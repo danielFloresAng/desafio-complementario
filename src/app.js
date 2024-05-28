@@ -33,4 +33,4 @@ app.use("/", viewsRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartRouter);
 app.use("/messages", messagesRouter);
-app.use("/static", express.static(`${config.DIRNAME}/public`));
+app.use("/", express.static(`${config.DIRNAME}/public`));

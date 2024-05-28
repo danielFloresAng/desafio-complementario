@@ -1,7 +1,11 @@
 import { Router } from "express";
 
-const cartRouter = new Router();
+import cartManagerMdb from "../dao/cartsManagerMdb.js";
 
+const cartRouter = Router();
+const manager = new cartManagerMdb()
+
+// GET para traer todos los carritos
 cartRouter.get("/", async (req, res) => {
   try {
     res.status(200).send({ status: "GET" });
@@ -9,21 +13,27 @@ cartRouter.get("/", async (req, res) => {
     res.status(500).send({ status: "error", error: error.message });
   }
 });
-cartRouter.post("/", async (req, res) => {
+
+// POST para agregar carritos
+cartRouter.post("/addCart", async (req, res) => {
   try {
     res.status(200).send({ status: "POST" });
   } catch (error) {
     res.status(500).send({ status: "error", error: error.message });
   }
 });
-cartRouter.put("/", async (req, res) => {
+
+// PUT para actualizar carritos
+cartRouter.put("/updateCart", async (req, res) => {
   try {
     res.status(200).send({ status: "PUT" });
   } catch (error) {
     res.status(500).send({ status: "error", error: error.message });
   }
 });
-cartRouter.delete("/", async (req, res) => {
+
+// DELETE para eliminar carritos
+cartRouter.delete("/deleteCart/:cid", async (req, res) => {
   try {
     res.status(200).send({ status: "DELETE" });
   } catch (error) {

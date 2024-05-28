@@ -23,12 +23,14 @@ class ProductManager {
   }
   async getProducts(limit) {
     let readItems = await fs.promises.readFile(this.path, this.products);
+
     let itemsParse = JSON.parse(readItems);
 
     return limit === 0 || limit > itemsParse.length
       ? itemsParse
       : itemsParse.slice(0, limit);
   }
+
   async getProductsById(itemID) {
     let readItems = await fs.promises.readFile(this.path, "utf-8");
     let list = JSON.parse(readItems);

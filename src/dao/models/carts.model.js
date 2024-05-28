@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
-mongoose.pluralize(null)
+mongoose.pluralize(null);
 
-const cartsCollection = 'carts'
+const cartsCollection = "carts";
 
 const cartsSchema = new mongoose.Schema({
-  products:{type: String, required: true}
-})
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "users", required: false },
+  products: [{ type: Object, required: true }],
+});
 
-const cartsModel = mongoose.model(cartsCollection, cartsSchema)
+const cartsModel = mongoose.model(cartsCollection, cartsSchema);
 
-export default cartsModel
+export default cartsModel;

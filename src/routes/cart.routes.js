@@ -1,9 +1,10 @@
 import { Router } from "express";
 
 import cartManagerMdb from "../dao/cartsManagerMdb.js";
+import config from "../config.js";
 
 const cartRouter = Router();
-const manager = new cartManagerMdb()
+const manager = new cartManagerMdb();
 
 // GET para traer todos los carritos
 cartRouter.get("/", async (req, res) => {
@@ -15,9 +16,14 @@ cartRouter.get("/", async (req, res) => {
 });
 
 // POST para agregar carritos
-cartRouter.post("/addCart", async (req, res) => {
+cartRouter.post("/addCart/:user/:pid", async (req, res) => {
+  const user = req.params.user
+  const productId = req.params.pid;
+
   try {
-    res.status(200).send({ status: "POST" });
+    const newCart = await manager.addCart(user, productName);
+    console.log(newCart)
+    res.status(200).send({ origin: config.SERVER, playload: newCart });
   } catch (error) {
     res.status(500).send({ status: "error", error: error.message });
   }
